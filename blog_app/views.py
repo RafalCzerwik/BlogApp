@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -16,7 +17,7 @@ class IndexView(View):
         return render(request, 'blog_app/index.html', {'all_user_posts': all_user_posts})
 
 
-class DashboardView(View):
+class DashboardView(LoginRequiredMixin, View):
     def get(self, request):
 
         user = request.user
@@ -48,7 +49,7 @@ class LoginView(View):
             return render(request, 'blog_app/login.html', {'error_message': error_message})
 
 
-class UpdatePasswordView(View):
+class UpdatePasswordView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'blog_app/update_password.html')
 
@@ -73,7 +74,7 @@ class UpdatePasswordView(View):
             return render(request, 'blog_app/update_password.html', {'success_message': success_message})
 
 
-class UpdateProfileView(View):
+class UpdateProfileView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'blog_app/profile.html')
 
@@ -103,13 +104,13 @@ class UpdateProfileView(View):
             })
 
 
-class LogoutView(View):
+class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return redirect('index')
 
 
-class DeleteAccountView(View):
+class DeleteAccountView(LoginRequiredMixin, View):
     def post(self, request):
         user = request.user
         user.delete()
@@ -175,7 +176,7 @@ class RegisterView(View):
         return render(request, 'blog_app/login.html', {'success_message': success_message})
 
 
-class AddPostView(View):
+class AddPostView(LoginRequiredMixin, View):
     def post(self, request):
         title = request.POST.get('title')
         description = request.POST.get('content')
@@ -200,7 +201,7 @@ class AddPostView(View):
         })
 
 
-class UpdatePostView(View):
+class UpdatePostView(LoginRequiredMixin, View):
     def get(self, request, id):
 
         user = request.user
@@ -249,7 +250,7 @@ class UpdatePostView(View):
         })
 
 
-class DeletePostView(View):
+class DeletePostView(LoginRequiredMixin, View):
     def get(self, request, id):
 
         all_user_posts = Post.objects.filter(author=request.user).order_by('-created_at')
