@@ -1,0 +1,44 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Landing page{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="container-login">
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <div class="container d-flex justify-content-center align-items-center">
+                <form action="{% url 'login' %}" method="post" class="form-signin">
+                    {% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-bold text-center">Sign In</h1>
+                    {% if error_message %}
+                        <div class="alert alert-danger">
+                            {{ error_message }}
+                        </div>
+                    {% elif success_message %}
+                        <div class="alert alert-success">
+                            {{ success_message }}
+                        </div>
+                    {% endif %}
+                    <div class="text-left">
+                        <label for="username" class="sr-only-log">Login</label>
+                        <input type="text" id="username" name="username" class="form-control mb-3" placeholder="Login" required autofocus>
+
+                        <label for="password" class="sr-only-log">Password</label>
+                        <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password" required>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+                    </div>
+                    <div class="text-center1">
+                        <a class="link" href="{% url 'register' %}">Don’t have an account? Sign up here</a>
+                    </div>
+                    <div class="text-center2">
+                        <a class="link1" href="{% url 'index' %}">Back to Main Page</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

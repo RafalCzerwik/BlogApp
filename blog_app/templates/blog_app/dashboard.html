@@ -1,0 +1,106 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="home-page-welcome">
+    Dashboard
+</div>
+<div class="container-index">
+    <div class="row">
+        <div class="col-md-12-dashboard text-center">
+            <p class="hello-dash">Welcome {{ user.username }} !</p>
+            <p class="logged">Last logged: {{ user.last_login }}</p>
+        </div>
+    </div>
+</div>
+<div class="container-menu">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <p><a class="nav-link" href="{% url 'update_password' %}">Update password</a></p>
+        </div>
+        <div class="col-md-3">
+            <p><a class="nav-link" href="{% url 'profile' %}">Update profile</a></p>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row-delete">
+        <div class="col-md-12">
+            <form id="delete-account-form" action="{% url 'delete_account' %}" method="post" style="display: none;">
+                {% csrf_token %}
+            </form>
+                <div class="delete">
+                    <a class="nav-link" href="{% url 'delete_account' %}" onclick="confirmDelete(event)">Delete account</a>
+                </div>
+        </div>
+    </div>
+    <div class="row-delete">
+        <div class="col-md-12">
+            <div class="delete">
+                <a class="nav-link" style="margin-bottom: 20px">Add post</a>
+                <div class="row delete-background">
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                    <div class="col-md-4" style="background-color: black">
+                        {% if error_message %}
+                            <div class="alert alert-danger">
+                                {{ error_message }}
+                            </div>
+                        {% elif success_message %}
+                            <div class="alert alert-success">
+                                {{ success_message }}
+                            </div>
+                        {% endif %}
+                        <form action="{% url 'add_post' %}" method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="title" placeholder="Post title" aria-label="Title">
+                            <div class="mb-3">
+                              <label for="exampleFormControlTextarea1" class="form-label"></label>
+                              <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                            </div>
+                            <div class="d-grid gap-2">
+                              <button class="btn btn-primary" type="submit">Add post</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                </div>
+                <a class="nav-link" style="margin-top: 60px; font-size: xx-large;">Your post</a>
+                <div class="row delete-background">
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                        <div class="col-md-4" style="background-color: black; color: #00FF7F; margin-bottom: 10px; margin-top: 20px; text-align: left">
+                            {% if all_user_posts %}
+                                {% for post in all_user_posts %}
+                            <div style="margin-bottom: 10px; padding: 20px; border: 1px solid darkgrey; border-radius: 15px;">
+                                <p style="font-size: x-large"><b style="color: white">Title: </b>{{ post.title }}</p>
+                                <p>Created: {{ post.created_at }}
+                                    <a class='post-edit' href="{% url 'post' post.id %}" style="color: blue; text-decoration: none;">Edit</a>
+                                    <a class='post-edit' href="{% url 'delete_post' post.id %}" style="color: red; text-decoration: none;">Delete</a>
+                                </p>
+                            </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function confirmDelete(event) {
+    event.preventDefault();
+    const confirmation = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    if (confirmation) {
+        document.getElementById('delete-account-form').submit();
+    }
+}
+</script>
+{% endblock %}

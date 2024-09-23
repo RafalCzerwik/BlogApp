@@ -1,0 +1,95 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="home-page-welcome">
+    Update profile
+</div>
+<div class="container-index">
+    <div class="row">
+        <div class="col-md-12-dashboard text-center">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form action="{% url 'profile' %}" method="post">
+        {% csrf_token %}
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            {% if success_message %}
+                <div class="alert alert-success">
+                    {{ success_message }}
+                </div>
+                {% elif error_message %}
+                    <div class="alert alert-danger">
+                        {{ error_message }}
+                    </div>
+                {% endif %}
+                <fieldset class="form-group mb-3">
+                    <legend class="sr-only2"><b>Gender</b></legend>
+                        <div class="form-check form-check-inline">
+                            {% if user.gender == 'M' %}
+                            <input class="form-check-input" type="radio" name="gender" id="Male" value="M" checked disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="gender" id="Male" value="M" disabled>
+                            {% endif%}
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {% if user.gender == 'F' %}
+                            <input class="form-check-input" type="radio" name="gender" id="Female" value="F" checked disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="gender" id="Female" value="F" disabled>
+                            {% endif%}
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {% if user.gender == 'O' %}
+                            <input class="form-check-input" type="radio" name="gender" id="Other" value="O" checked disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="gender" id="Other" value="O" disabled>
+                            {% endif%}
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                </fieldset>
+                    <label for="login" class="sr-only3"><b>Login</b></label>
+                    <input type="text" id="login" name="username" value="{{ user.username }}" class="form-control mb-3" placeholder="{{ user.username }}" disabled autofocus>
+
+                    <div class="info1">
+                        <span class="span-info1">
+                            <br>The modification of the username is strictly prohibited.
+                            If you wish to change your username, please contact the system administrator directly for assistance.
+                        </span>
+                    </div>
+                    <label for="first-name" class="sr-only3"><b>First Name</b></label>
+                    <input type="text" id="first-name" name="first_name" value="{{ user.first_name }}" class="form-control mb-3" placeholder="{{ user.first_name }}" autofocus>
+
+                    <label for="last-name" class="sr-only3"><b>Last Name</b></label>
+                    <input type="text" id="last-name" name="last_name" value="{{ user.last_name }}" class="form-control mb-3" placeholder="{{ user.last_name }}">
+
+                    <label for="email" class="sr-only4"><b>Email</b></label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" class="form-control mb-3" placeholder="{{ user.email }}">
+
+                    <div class="info2">
+                        <span class="span-info2" style="">
+                            <br>The modification of the email is strictly prohibited.
+                            If you wish to change your email, please contact the system administrator directly for assistance.
+                        </span>
+                    </div>
+            <div class="btn-update">
+                    <div class="col-md-12 justify-content-center">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                        <div class="text-center8">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Back to Dashboard</a>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock %}

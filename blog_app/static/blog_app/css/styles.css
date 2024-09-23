@@ -1,0 +1,406 @@
+/* base.html */
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding-left: 50px;
+    border-bottom: 1px groove #3c3b3b;
+}
+
+.header-nav {
+    background-color: black;
+    padding: 20px 0px;
+    color: white;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.link-nav {
+    color: white;
+    text-decoration: none;
+
+}
+.link-nav:hover {
+    color: #00FF7F;
+    text-decoration: none;
+}
+
+.header-back {
+    background-color: black;
+    color: white;
+}
+.header-back:hover {
+    color: #00FF7F;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    background-color: black;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px 0;
+}
+
+footer {
+    background-color: black;
+    border-top: 1px groove #3c3b3b;
+    font-size: small;
+    padding: 20px 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* index.html */
+
+.home-page-welcome {
+    padding-bottom: 20px;
+    color: #D3D3D3;
+    font-size: 50px;
+    text-align: center;
+}
+
+.container-index .col-md-3 {
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.container-index .col-md-12-index {
+    padding-bottom: 40px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.container-index .col-md-4 {
+    padding-bottom: 40px;
+    color: #00FF7F;
+    font-size: 30px;
+    background-color: black;
+    margin-top: 30px;
+}
+
+
+/* login.html */
+
+.container-login {
+    margin-top: 50px;
+}
+.container-login .container {
+    background-color: #02027e;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.container .h3 {
+    margin-top: 30px;
+    color: white;
+}
+
+.container .text-left {
+    color: white;
+    font-size: small;
+}
+
+.sr-only-log {
+    color: white;
+    font-size: small;
+}
+
+
+.text-center .btn {
+    margin-top: 20px;
+    text-align: center;
+    color: #02027e;
+    background-color: #c2c1c1;
+    border-radius: 30px;
+}
+
+.text-center .link {
+    color: #a4a4f1;
+    margin-bottom: 10px;
+}
+
+.text-center1 .link1 {
+    color: #a4a4f1;
+    margin-bottom: 10px;
+}
+
+.container .text-center1 {
+    margin-bottom: 5px;
+}
+
+.container .text-center2 {
+    margin-bottom: 20px;
+}
+
+/* register.html */
+
+.container-register .col-md-3 {
+    background-color: #02027e;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.container .h3 {
+    margin-top: 50px;
+    color: white;
+}
+
+.sr-only {
+    color: white;
+    font-size: large;
+}
+
+.form-check-label1 {
+    color: white;
+    font-size: small;
+}
+
+.form-check-label2 {
+    color: white;
+    font-size: small;
+}
+
+.form-check-label3 {
+    color: white;
+    font-size: small;
+}
+
+.sr-only1 {
+    color: white;
+    font-size: small;
+}
+
+.container .text-center1 {
+    margin-top: 50px;
+}
+
+.text-center3 .btn {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    align-content: center;
+    color: #02027e;
+    background-color: #c2c1c1;
+    border-radius: 30px;
+}
+
+.text-center4 {
+    color: #a4a4f1;
+    margin-bottom: 5px;
+}
+
+.text-center5 {
+    margin-bottom: 40px;
+    color: #a4a4f1;
+}
+
+/* dashboard.html */
+
+.hello-dash {
+    color: #00FF7F;
+    font-size: x-large;
+}
+
+.logged {
+    font-size: small;
+}
+
+.row-delete .nav-link {
+    font-size: 20px;
+    color: white;
+    margin-top: 40px;
+}
+
+.container-menu .col-md-3 {
+    color: white;
+    font-size: 25px;
+    margin-top: 40px;
+}
+
+.col-md-3 .nav-link:hover {
+    color: #00FF7F;
+    cursor: pointer;
+}
+
+.delete .nav-link:hover {
+    color: #ff0015;
+    cursor: pointer;
+}
+
+/* change_password.html */
+
+.hello {
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+.col-md-12-dashboard {
+    color: white;
+}
+
+.container-update .col-md-2 {
+    background-color: #5d5d65;
+    border-radius: 10px;
+}
+
+.col-md-2 {
+    margin-bottom: 40px;
+}
+
+.col-md-2 .sr-only0 {
+    color: white;
+    font-size: small;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.col-md-2 .sr-only {
+    color: white;
+    font-size: small;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.col-md-2 .btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text-center7 .nav-link {
+    color: #02027e;
+    margin-bottom: 20px;
+}
+
+.text-center7 .nav-link:hover {
+    color: #00FF7F;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+/* profile.html */
+
+.col-md-4 {
+    background-color: #5d5d65;
+    border-radius: 10px;
+}
+
+.col-md-4 .sr-only2 {
+    margin-top: 20px;
+    color: white;
+    font-size: small;
+}
+
+.col-md-4 .form-check-label {
+    font-size: small;
+}
+
+.col-md-4 .form-check-label {
+    color: white;
+}
+
+.sr-only3 {
+    font-size: small;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.info1 {
+    margin-top: -35px;
+    margin-bottom: 10px;
+}
+
+.span-info1 {
+    color: white;
+    font-size: small;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.sr-only4 {
+    color: white;
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+.info2 {
+    margin-top: -35px;
+    margin-bottom: 10px;
+}
+
+.span-info2 {
+    color: white;
+    font-size: small;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.sr-only5 {
+    color: white;
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+.info3 {
+    margin-top: -35px;
+    margin-bottom: 10px;
+}
+
+.span-info3 {
+    color: white;
+    font-size: small;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.sr-only6 {
+    color: white;
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+.dob {
+    margin-top: -10px;
+    font-size: small;
+    align-content: center;
+}
+.date {
+    color: white;
+}
+
+.btn-update .col-md-4 {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.btn-update .btn {
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text-center8 .nav-link {
+    color: #02027e;
+    margin-bottom: 20px;
+}
+
+.text-center8 .nav-link:hover {
+    color: #00FF7F;
+}

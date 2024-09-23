@@ -1,0 +1,40 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Landing page{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="home-page-welcome">
+    Welcome!
+</div>
+<div class="container-index">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <p>This project is a functional demo of a user registration and login system.
+                It allows users to create accounts, log in and update their added posts.
+                Our application is built with powerful technologies like Python and Django.</p>
+
+            <p><b>Tech Stack:</b> Python, Django, SQLite, HTML, CSS, Bootstrap</p>
+        </div>
+    </div>
+    <a class="nav-link" style="margin-top: 60px; font-size: xx-large; color: red;">New posts</a>
+                <div class="row delete-background">
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                        <div class="col-md-4" style="background-color: black; color: #00FF7F; margin-bottom: 10px; margin-top: 20px; text-align: left">
+                            {% if all_user_posts %}
+                                {% for post in all_user_posts %}
+                            <div style="margin-bottom: 10px; padding: 20px; border: 1px solid grey; border-radius: 15px;">
+                                <p style="font-size: x-large"><b style="color: white">{{ post.title }}</b></p>
+                                <p style="font-size: large"><b style="color: #D3D3D3; border: white">{{ post.content }}</b></p>
+                                <p style="font-size: small">Added by: {{ post.author }}</p>
+                                <p style="font-size: x-small">Created: {{ post.created_at }}</p>
+                            </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    <div class="col-md-4" style="background-color: black">
+                    </div>
+                </div>
+</div>
+{% endblock %}

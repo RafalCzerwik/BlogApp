@@ -1,0 +1,52 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="container-register">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="container d-flex justify-content-center align-items-center">
+                <form action="{% url 'register' %}" method="post" class="form-register">
+                    {% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Register account</h1>
+                    {% if error_message %}
+                        <div class="alert alert-danger">
+                            {{ error_message }}
+                        </div>
+                    {% endif %}
+
+                    <label for="first-name" class="sr-only1">First Name</label>
+                    <input type="text" id="first-name" name="first_name" class="form-control mb-3" placeholder="First Name" required autofocus>
+
+                    <label for="last-name" class="sr-only1">Last Name</label>
+                    <input type="text" id="last-name" name="last_name" class="form-control mb-3" placeholder="Last Name" required>
+
+                    <label for="login" class="sr-only1">Login</label>
+                    <input type="text" id="login" name="username" class="form-control mb-3" placeholder="Login" required autofocus>
+
+                    <label for="password" class="sr-only1">Password</label>
+                    <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password" required>
+
+                    <label for="password-confirm" class="sr-only1">Confirm Password</label>
+                    <input type="password" id="password-confirm" name="password_confirm" class="form-control mb-3" placeholder="Confirm Password" required>
+
+                    <label for="email" class="sr-only1">Email</label>
+                    <input type="email" id="email" name="email" class="form-control mb-3" placeholder="Email" required>
+
+                    <div class="text-center3">
+                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Create account</button>
+                    </div>
+                    <div class="text-center4">
+                        <a class="link1" href="{% url 'login' %}">Already registered? Sign in on your account</a>
+                    </div>
+                    <div class="text-center5">
+                        <a class="link2" href="{% url 'index' %}">Back to Main Page</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

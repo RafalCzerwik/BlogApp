@@ -1,0 +1,42 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<div class="home-page-welcome">
+    Post menu
+</div>
+<div class="container-index">
+    <div class="row">
+        <div class="col-md-12-dashboard text-center">
+            <p class="hello-dash">Update post</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center align-items-center">
+        </div>
+        <div class="col-md-4">
+            <form action="{% url 'post' post.id %}" method="post">
+                {% csrf_token %}
+                <input class="form-control" name="title" type="text" value="{{ post.title }}" placeholder="{{ post.title }}" aria-label="Title">
+                <div class="mb-3">
+                  <label for="description" class="form-label"></label>
+                  <textarea class="form-control" name="content" id="description" rows="3" placeholder="{{ post.content }}">{{ post.content }}</textarea>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+                <div>
+                    <p style="margin-top: 30px"><a href="{% url 'dashboard' %}" class="nav-link" style="color: #c2c1c1; font-size: large">Back to dashboard</a></p>
+                </div>
+                </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+<div class="container-menu">
+
+</div>
+{% endblock %}
